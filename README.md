@@ -8,4 +8,4 @@ I've been homelabbing since 2023. This repo is a collection of stories about my 
   🔗 [Medium](https://medium.com/@peter_kinyua)
  
 <!-- placeholder for GIF -->
-![Homelab Demo](assests/homelab.png)
+![Homelab Demo](assets/homelab.png)
