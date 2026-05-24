@@ -1,7 +1,6 @@
 # My Homelab Deep Dive
 
-
-A complete walkthrough of my homelab in 2026 
+A complete walkthrough of my homelab in 2026.
 Full write-up on Medium for my 2025 homelab overview: [Why I Built a Home Lab and What I'm Self-Hosting](https://medium.com/@peter_kinyua/why-i-built-a-home-lab-and-whats-i-am-self-hosting-4b7c75b84c09)
 
 ---
@@ -31,20 +30,18 @@ Full write-up on Medium for my 2025 homelab overview: [Why I Built a Home Lab an
   - [GitOps](#gitops)
   - [The Pipeline](#the-pipeline)
   - [Automation Tools](#automation-tools)
-  - [Declarative vs Imperative](#declarative-vs-imperative)
 - [IoT and Home Automation](#iot-and-home-automation)
 - [Observability](#observability)
   - [Observability Matrix — InfluxDB + Telegraf Path](#observability-matrix--influxdb--telegraf-path)
   - [Observability Matrix — Prometheus Path](#observability-matrix--prometheus-path)
 - [Career](#career)
   - [Why This Matters Professionally](#why-this-matters-professionally)
-  - [Skills Map](#skills-map)
 - [For Network Engineers](#for-network-engineers)
   - [Network Sandboxes and Emulators](#network-sandboxes-and-emulators)
   - [Open Source NMS Tools](#open-source-nms-tools)
   - [Observability Tools for Networking](#observability-tools-for-networking)
 - [Learning Roadmap](#learning-roadmap)
-- [Five Things to Remember](#five-things-to-remember)
+- [Takeaways](#takeaways)
 
 ---
 
@@ -54,7 +51,7 @@ Full write-up on Medium for my 2025 homelab overview: [Why I Built a Home Lab an
 
 A used gaming laptop, CasaOS, and a single goal: stop paying for cloud storage.
 
- A home lab is a personal playground where you experiment with compute, networking, and storage without the risk of taking down production. Mine started as a simple hobby. These days it runs services I depend on daily and serves as the most useful technical training environment I have had — more useful than any course, more useful than most jobs.
+A home lab is a personal playground where you experiment with compute, networking, and storage without the risk of taking down production. Mine started as a simple hobby. These days it runs services I depend on daily and serves as the most useful technical training environment I have had — more useful than any course, more useful than most jobs.
 
 I work in networking. I have had my fill of CLI-only setups professionally. At home I wanted a system I could break intentionally, rebuild from Git, and understand at every layer. That instinct — build it, break it, understand why — is the whole point.
 
@@ -69,12 +66,11 @@ The lab grew through four distinct phases. Each one unlocked a new category of u
 | 01 — The gaming laptop | CasaOS, Docker, first self-hosted apps | Linux basics, SSH, port forwarding, reverse proxies, Docker |
 | 02 — Mini PCs + small rack | Two or three mini PCs, a managed switch, a tiny rack | VLANs, subnets, static DHCP, firewall rules |
 | 03 — Threadripper added | Real CPU, real RAM, PCIe lanes. Hardware became interesting | Bifurcation, NICs, GPU passthrough |
-| 04 — 12U rack, full UniFi Stack | Proxmox cluster, UniFi gateway and switches, UPS, NAS | Clustering, SDN, automation, production mentality |
+| 04 — 12U rack, full UniFi stack | Proxmox cluster, UniFi gateway and switches, UPS, NAS | Clustering, SDN, automation, production mentality |
 
 At the heart of the lab sits a Rivco 16U server rack and a Geek-Pi mini rack. The Lenovo ThinkStation P620 (AMD Threadripper Pro 3945WX) is the powerhouse — virtualisation, storage, orchestration. A Firebat mini PC runs Linux Mint in kiosk mode as a dedicated metrics dashboard. Three mini PCs named after hydrogen isotopes form the fusion cluster. A UNAS Pro NAS handles storage and backups.
 
 ![Evolution of my homelab](assets/rack-overview.jpg)
-
 
 ---
 
@@ -84,29 +80,27 @@ What the YouTube build videos don't mention.
 
 **Heat and noise**
 
-Datacenter gear is loud. You need to plan thermals and noise mitigation before you buy—airflow, dust control, and undervolting are not optional. My lab doubles as my office, and while the Threadripper and mini PC cluster produce noticeable heat even at idle, it’s still very manageable thanks to how efficient mini PCs are
+Datacenter gear is loud. You need to plan thermals and noise mitigation before you buy — airflow, dust control, and undervolting are not optional. My lab doubles as my office, and while the Threadripper and mini PC cluster produce noticeable heat even at idle, it's still very manageable thanks to how efficient mini PCs are.
 
-![It gets hot ](assets/temp-dashboard.jpg)
+![It gets hot](assets/temp-dashboard.jpg)
 
 **Power — the silent monthly bill**
 
-More compute means a bigger power bill. Idle draw matters more than peak — a homelab is idle 95% of the time. Use a smart plug (Tapo, Shelly) to measure each box before committing. Old Xeons may look free on eBay but a 250W idle box will out-cost a new mini PC within months. I track power consumption per host via smart plugs feeding into Grafana.
+More compute means a bigger power bill. Idle draw matters more than peak — a homelab is idle 95% of the time. Use a smart plug (Tapo, Shelly) to measure each box before committing. Old Xeons may look free on eBay, but a 250W idle box will out-cost a new mini PC within months. I track power consumption per host via smart plugs feeding into Grafana.
 
-![With more power comes an even bigger power bil](assets/cost-dashboard.jpg)
+![With more power comes an even bigger power bill](assets/cost-dashboard.jpg)
 
 **Size matters**
 
-When it comes to rack space, you’ll always need more than you planned for. I learned that the hard way with my first rack… and somehow repeated it with the second. Pay attention to the real constraints early: rack units, depth, weight, and cabling. A short-depth 12U works well for a home lab, but a full-depth 42U can quickly become impractical sometimes it won’t even fit through the doorways that define your space.
+When it comes to rack space, you'll always need more than you planned for. I learned that the hard way with my first rack… and somehow repeated it with the second. Pay attention to the real constraints early: rack units, depth, weight, and cabling. A short-depth 12U works well for a home lab, but a full-depth 42U can quickly become impractical — sometimes it won't even fit through the doorways that define your space.
 
-![Rack space ](assets/rack.jpg)
+![Rack space](assets/rack.jpg)
 
-**Room for expansion — PCIe lanes,rack size**
+**Room for expansion — PCIe lanes, rack size**
 
-The thing you’ll regret in 6 months: not counting PCIe lanes early. NICs, NVMe drives, and GPUs all compete for the same bandwidth
+The thing you'll regret in 6 months: not counting PCIe lanes early. NICs, NVMe drives, and GPUs all compete for the same bandwidth.
 
-![PCIe bifurcation and Network NIC expansion](assets/pcie.jpg)
-
-
+![PCIe bifurcation and Network NIC expansion](assets/pcie.png)
 
 ---
 
@@ -116,20 +110,18 @@ The thing you’ll regret in 6 months: not counting PCIe lanes early. NICs, NVMe
 
 A homelab is a stack. Each layer assumes the one below it works. Networking is the bottom — not the topping.
 
-![Home lab layers ](assets/lab-stack.png)
+![Home lab layers](assets/lab-stack.png)
 
-Read it bottom-up. Every networking problem presents itself elsewhere first — as a DNS timeout, as a VM that won't talk to another VLAN, as a mysterious 30-second delay. The faster you learn to read the network layer, the faster everything else makes sense.
+Read it bottom-up. Every networking problem presents itself elsewhere first — as a DNS timeout, as a VM that won't talk to another VLAN, as a mysterious 30-second delay. The faster I learned to read the network layer, the faster everything else started making sense.
 
 ---
 
 ### Two Design Patterns
 
-Two patterns cover most used in my homelab network. 
+Two patterns cover most of what I use in my homelab network:
 
-  a. Pattern A — VLANs only
-  b. Pattern B — OpenFabric + EVPN - overkill 
-
-
+a. Pattern A — VLANs only
+b. Pattern B — OpenFabric + EVPN — overkill for a homelab
 
 ### Pattern A — VLAN-only
 
@@ -140,9 +132,7 @@ One switch. One trunk. Tags carry the segmentation. The pattern most homelabs ru
 - Router does inter-VLAN routing
 - Switch is the single point of failure
 
-![Patten A](assets/pattern-a.png)
-
-
+![Pattern A](assets/pattern-a.png)
 
 ### Pattern B — OpenFabric + EVPN
 
@@ -207,60 +197,49 @@ graph TB
     style Overlay fill:#1e293b,stroke:#475569,color:#e2e8f0
     style Underlay fill:#1e293b,stroke:#475569,color:#e2e8f0
     style Physical fill:#1e293b,stroke:#475569,color:#e2e8f0
-```text
+```
 
 ![Thunderbolt cluster diagram](assets/networking-tb-cluster-diagram.jpg)
 
-
-> **Screenshot placeholder** — Thunderbolt cluster physical cable layout
-
 **Thunderbolt throughput — iperf3 over the fabric**
 
-Testing loopback-to-loopback measures exactly what real workloads experience. The outer addresses are routed by OpenFabric; traffic travels over Thunderbolt.
+Testing loopback-to-loopback measures exactly what real workloads experience. The outer addresses are routed by OpenFabric; traffic travels over Thunderbolt interfaces.
 
 ```bash
-# server on tritium — binds to loopback, exits after one client
-iperf3 -s -B 10.255.0.2 -1
+# server on deuterium — binds to loopback
+iperf3 -s -B 10.255.0.3 -1 -D
 
-# client on protium — 4 parallel streams, 30 seconds
-iperf3 -c 10.255.0.2 -B 10.255.0.1 -t 30 -P 4
+# client on tritium — 4 parallel streams
+iperf3 -c 10.255.0.3 -B 10.255.0.2 -t 30 -P 4
 ```
 
 Result: **~18.3 Gbps sustained**, 4 parallel streams, zero retransmits, over 30 seconds.
 
 ![iperf3 Thunderbolt result](assets/networking-iperf-thunderbolt.jpg)
 
-> **Screenshot placeholder** — iperf3 terminal output showing the ~18 Gbps SUM line
-
 ---
 
-### My Setup — WiFi, VLANs, DNS,DHCP and Reverse proxies.
+### My Setup — WiFi, VLANs, DNS, DHCP and Reverse Proxies
 
 | Component | Role |
 |---|---|
 | <img src="https://www.technitium.com/favicon.ico" width="16"/> [Technitium DNS](https://technitium.com) | Primary DNS. Authoritative + recursive. Native split-horizon, conditional forwarding, DNS-over-HTTPS, custom internal zones |
-| <img src="https://pi-hole.net/favicon.ico" width="16"/> [Pi-hole](https://pi-hole.net) | Network-wide ad blocking. Secondary DNS |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/traefik-proxy.png" width="16"/> [Traefik Proxy](https://traefik.io/) | My go-to reverse proxy |
 | <img src="https://ui.com/favicon.ico" width="16"/> [UniFi DHCP](https://ui.com) | Per-VLAN scopes, static reservations |
 | <img src="https://ui.com/favicon.ico" width="16"/> [UniFi Controller](https://ui.com) | Network brain — switch and AP config, firewall rules, traffic ID, VPN endpoints |
 
-Six VLANs in production:
+VLANs:
 
 | ID | Name | Purpose |
 |---|---|---|
 | 10 | APPS | Self-hosted application VMs |
 | 11 | MGMT | Management plane — Proxmox, UniFi, out-of-band access |
-| 20 | IOT | Home Assistant, smart plugs, sensors |
+| 30 | IOT | Home Assistant, smart plugs, sensors |
 | 40 | K3S | k3s cluster nodes |
 | 100 | K8S | Full Kubernetes cluster nodes |
 | 200 | LB | MetalLB / load balancer address pool |
 
 ![UniFi network topology](assets/networking-unifi-topology.jpg)
-
-> **Screenshot placeholder** — UniFi network topology view
-
-![UniFi Design Center — WiFi bands and AP placement](assets/networking-unifi-design-center.jpg)
-
-> **Screenshot placeholder** — UniFi Design Center showing WiFi bands and AP placements
 
 ---
 
@@ -273,14 +252,6 @@ Six VLANs in production:
 ![Rack layout](assets/Rack-layout.jpg)
 
 > Physical unit positions and rack cabling
-
-![Logical topology](assets/topology-layout.jpg)
-
-> Logical topology — VLANs, routing, and service placement
-
-![Switch port layout](assets/port-layout.jpg)
-
-> Switch port layout — VLAN assignments per port
 
 ![2.4 GHz WiFi design](assets/2.4G-wifi-design.jpg)
 
@@ -304,7 +275,7 @@ Three constructs explain everything about how VMs connect to physical networks i
 
 A virtual switch inside the host. VMs attach to it and get switched to physical interfaces. VLAN-aware bridges pass 802.1Q tags through to the VM.
 
-![Linux bridge diagram](assets/Linux-bridge.jpg)
+![Linux bridge and bond diagram](assets/Linux-bridge.jpg)
 
 ```bash
 auto vmbr0
@@ -316,9 +287,7 @@ iface vmbr0 inet static
 
 **bond — link aggregation**
 
-Two or more NICs treated as one. LACP for redundancy and bandwidth. Active-backup if your switch cannot speak LACP. Sits underneath the bridge.
-
-![Linux bond diagram](assets/Linux-bond.jpg)
+Two or more NICs treated as one. LACP for redundancy and bandwidth. Active-backup for switchs with  LACP capabilities. Sits underneath the bridge.
 
 ```bash
 auto bond0
@@ -330,7 +299,7 @@ iface bond0 inet manual
 
 **FRR — routing daemon**
 
-BGP, OSPF, IS-IS, OpenFabric, EVPN — all running in userspace on the Proxmox host. Turns your hypervisor into a router. Required for SDN EVPN zones.
+BGP, OSPF, IS-IS, OpenFabric, EVPN — all running in userspace on the Proxmox host. Turns  hypervisor into a router. Required for SDN EVPN zones.
 
 ```text
 router bgp 65000
@@ -345,16 +314,14 @@ router openfabric 1
 
 ### The Fusion Cluster
 
-Three mini PCs named after isotopes of hydrogen: protium, tritium, deuterium. The naming is not cosmetic — fusion requires hydrogen isotopes and the cluster's purpose is to fuse separate compute nodes into one coherent platform.
+I have a three-mini-PC cluster named after isotopes of hydrogen: protium, tritium, deuterium.
 
-| Feature | What it means in practice |
+| Feature | Cluster capabilities |
 |---|---|
 | HA and failover | VM dies on one node, restarts on another within seconds |
 | Live migration | Move a running VM between nodes with no downtime |
 | Ceph storage | Distributed block storage — survive single-disk and single-node failures |
 | SDN — EVPN zones | Tenant networks across the cluster, anycast gateways, multi-tenancy without VLANs |
-
-Tested Thunderbolt throughput between nodes: **~18.3 Gbps sustained** with 4 parallel streams, zero retransmits, over 30 seconds.
 
 ---
 
@@ -376,12 +343,6 @@ The API-first design is the deciding factor for a GitOps workflow. Every VM, net
 
 ![Proxmox Datacenter Manager](assets/compute-proxmox-datacenter-manager.jpg)
 
-> **Screenshot placeholder** — Proxmox Datacenter Manager overview
-
-![Proxmox nodes and specs](assets/compute-proxmox-nodes-specs.jpg)
-
-> **Screenshot placeholder** — Proxmox cluster node list showing CPU, RAM, and storage per node
-
 ---
 
 ### What a 3-Node Cluster Gives You
@@ -399,14 +360,14 @@ The API-first design is the deciding factor for a GitOps workflow. Every VM, net
 
 ### The Spectrum
 
-The same workload sometimes works in any runtime. The right answer is rarely "use only one." Most homelabs end up running all three because each one is best at something different.
+The same workload sometimes works in any runtime. The right answer is rarely "use only one." In my homelab I  end up running all three because each one is best at something different.
 
 | Runtime | Best for | Trade-off |
 |---|---|---|
 | Full VMs (KVM) | Stateful infra — NetBox, GitLab, Home Assistant | Per-VM kernel, strong isolation, higher overhead |
 | <img src="https://www.docker.com/favicon.ico" width="16"/> [Docker](https://docker.com) | Most apps — arr stack, Traefik, Atlantis | Shared kernel, composable, image-based |
-| <img src="https://k3s.io/favicon.ico" width="16"/> [k3s](https://k3s.io) / [microk8s](https://microk8s.io) | Learning Kubernetes, GitOps practice | Lightweight, real K8s API, Cilium or Flannel CNI |
-| <img src="https://kubernetes.io/favicon.ico" width="16"/> [Full K8s (kubeadm)](https://kubernetes.io) | Production prep, HA control planes | More moving parts, etcd, dedicated control plane nodes |
+| <img src="https://cdn.jsdelivr.net/gh/selfhst/icons/png/rancher-k3s.png" width="16"/> [k3s](https://k3s.io) / [microk8s](https://microk8s.io) | Learning Kubernetes, GitOps practice | Lightweight, real K8s API, Cilium or Flannel CNI |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/kubernetes.png" width="16"/> [Full K8s (kubeadm)](https://kubernetes.io) | Production prep, HA control planes | More moving parts, etcd, dedicated control plane nodes |
 
 ---
 
@@ -414,17 +375,13 @@ The same workload sometimes works in any runtime. The right answer is rarely "us
 
 | Runtime | What runs on it | Mindset |
 |---|---|---|
-| Proxmox VMs | NetBox, GitLab, Home Assistant, Pi-hole, Technitium, long-lived stateful services | Set it and forget it |
+| Proxmox VMs | NetBox, GitLab, Home Assistant, Pi-hole, Technitium, long-lived stateful services | Hosts for Docker and Kubernetes |
 | Docker Compose | Traefik, arr stack (Sonarr, Radarr, Lidarr, Bazarr), Jellyfin, Atlantis | Most app workloads |
-| k3s cluster | ArgoCD, Gitea, Cilium with BGP, Gateway API + cert-manager | Resume material |
+| k3s cluster | ArgoCD, Gitea, Cilium with BGP, Gateway API + cert-manager | GitOps CI/CD workflows |
 
 **VM setup — templating and provisioning**
 
-VMs are created from cloud-init templates, not installed manually. Packer builds the base image. Terraform provisions the VM from it. Ansible configures the application layer on top.
-
-![VM templating](assets/virtualization-vm-provisioning.jpg)
-
-> **Screenshot placeholder** — Semaphore Terraform run creating a VM from a cloud-init template
+VMs are created from cloud-init templates, not installed manually. Prebuilt base image template. Terraform provisions the VM from it. Ansible configures the application layer on top.
 
 **Docker setup — Portainer**
 
@@ -432,16 +389,15 @@ VMs are created from cloud-init templates, not installed manually. Packer builds
 
 ![Portainer stack manager](assets/virtualization-portainer.jpg)
 
-> **Screenshot placeholder** — Portainer showing running stacks and container health
-
 **Kubernetes setup — HA Kubernetes and standalone Cilium k3s**
 
-Two Kubernetes environments run in the lab:
+Two ways I run Kubernetes environments in my home lab:
 
-- A standalone k3s cluster with Cilium CNI and BGP control plane, Gateway API CRDs, and cert-manager for wildcard TLS via Cloudflare DNS-01
+- Standalone k3s clusters with Cilium CNI and BGP control plane, Gateway API CRDs, and cert-manager for wildcard TLS via Cloudflare DNS-01
 - A multi-node HA kubeadm cluster for production-pattern practice with etcd, dedicated control planes, and worker nodes
 
-![HA Kubernetes cluster](assets/virtualization-k8s-ha.jpg)
+![HA Kubernetes Rancher dashboard](assets/virtualization-k8s-ha.jpg)
+![HA Kubernetes cluster](assets/virtualization-ha.jpg)
 
 > **Screenshot placeholder** — kubectl get nodes or Lens showing HA cluster control planes and workers
 
@@ -455,7 +411,7 @@ Two Kubernetes environments run in the lab:
 
 ### GitOps
 
-The lab runs a full GitOps loop. Every application change starts as a commit. Every infrastructure change starts as a merge request. Nothing is clicked into existence and left undocumented.
+My lab runs a full GitOps loop. Every application change starts as a commit. Every infrastructure change starts as a merge request. Nothing is clicked into existence and left undocumented.
 
 <img src="https://about.gitlab.com/favicon.ico" width="16"/> [GitLab CE](https://about.gitlab.com) is the source of truth for all code: application manifests, Terraform modules, Ansible playbooks, Kestra flow definitions, and Helm values. A push to the main branch triggers a CI pipeline.
 
@@ -465,21 +421,15 @@ The lab runs a full GitOps loop. Every application change starts as a commit. Ev
 
 **A working example — deploying an app through the full pipeline:**
 
-```text
-Code change pushed to GitLab
-        |
-GitLab CI builds the Docker image
-        |
-Image pushed to Harbor registry
-        |
-ArgoCD detects the new image tag
-        |
-ArgoCD updates the Deployment in k3s
-        |
-Gateway API exposes the service at the configured hostname
-```
+![Full  CID pipeline ](assets/cicd.png)
 
 The same pipeline runs for any containerised app. Write the Dockerfile and the Kubernetes manifest, push — the rest is automated.
+![Gitlab  CI ](assets/clocks-gitlab.jpg)
+
+![Gitlab  registrey ](assets/registry-gitlab.jpg)
+
+![argocd  CD ](assets/clocks-argocd.jpg)
+
 
 ---
 
@@ -487,25 +437,9 @@ The same pipeline runs for any containerised app. Write the Dockerfile and the K
 
 Git as source of truth. NetBox as desired state. Each tool does one thing well.
 
-```text
-01 · SOURCE OF TRUTH
-GitLab (code, configs, manifests) + NetBox (IPs, devices, prefixes)
-                |
-02 · ORCHESTRATION
-Kestra / Semaphore UI
-Schedules pipelines, triggers on Git push, glues the steps below
-                |
-03 · EXECUTION
-Packer  -->  Terraform  -->  Ansible
-Build       Provision        Configure
-images      VMs, networks    apps
-                |
-04 · RESULT
-Running infra.
-Drift detected by reconciler becomes the next Git commit.
-```
+![The Pipeline](assets/automation-pipeline.png)
 
-The first time you destroy a cluster and rebuild it entirely from a Git repo, something changes in how you think about infrastructure. Click-ops does not survive past one rebuild. The lab exists to make that lesson cheap to learn and easy to repeat.
+Automation takes time and effort to build. Click-ops does not survive past one rebuild. The lab exists to make that lesson cheap to learn and easy to repeat.
 
 ---
 
@@ -528,11 +462,7 @@ NetBox stores the desired state of the lab. Every device, IP address, VLAN, and 
 
 ![NetBox device inventory](assets/automation-netbox-devices.jpg)
 
-> **Screenshot placeholder** — NetBox device list showing nodes, VMs, and their IP assignments
-
 ![UniFi to NetBox sync — Kestra workflow](assets/automation-kestra-unifi-netbox-sync.jpg)
-
-> **Screenshot placeholder** — Kestra workflow diagram showing UniFi data flowing into NetBox via the sync container
 
 **Kestra — VM provisioning and NetBox documentation flow**
 
@@ -540,7 +470,44 @@ Kestra orchestrates the full VM lifecycle: trigger on Git push → Terraform pro
 
 ![Kestra VM provisioning flow](assets/automation-kestra-vm-provision.jpg)
 
-> **Screenshot placeholder** — Kestra pipeline execution for VM provisioning, showing each task and its status
+```mermaid
+flowchart LR
+    User([Trigger flow<br/>with inputs]) --> Kestra[Kestra<br/>provision-v1]
+
+    Kestra --> T1[terraform_apply<br/>clone VM in Proxmox]
+    T1 -->|state| GitLab[(GitLab<br/>TF state)]
+    T1 -->|clone template 9000<br/>VLAN 50, DHCP| PVE[Proxmox]
+
+    PVE --> VM[New VM<br/>booting]
+
+    T1 --> T2[parse_output<br/>extract vm_id, mac, node]
+
+    T2 --> T3[wait_for_dhcp_ip<br/>poll guest agent<br/>up to 5 min]
+    T3 -->|qemu-agent| VM
+    VM -->|reports IP| T3
+
+    T3 --> T4[netbox_register<br/>create site/tenant/role/tags<br/>register VM + iface + IP]
+    T4 --> NetBox[(NetBox)]
+
+    T4 --> Done([VM live<br/>+ documented])
+
+    T1 -.->|on failure| Slack[Slack notify]
+    T3 -.->|on failure| Slack
+    T4 -.->|on failure| Slack
+
+    style User fill:#1e293b,stroke:#60a5fa,color:#e2e8f0
+    style Done fill:#14532d,stroke:#4ade80,color:#dcfce7
+    style VM fill:#14532d,stroke:#4ade80,color:#dcfce7
+    style Kestra fill:#581c87,stroke:#c084fc,color:#e9d5ff
+    style T1 fill:#365314,stroke:#a3e635,color:#ecfccb
+    style T2 fill:#1e3a8a,stroke:#60a5fa,color:#dbeafe
+    style T3 fill:#1e3a8a,stroke:#60a5fa,color:#dbeafe
+    style T4 fill:#1e3a8a,stroke:#60a5fa,color:#dbeafe
+    style PVE fill:#7c2d12,stroke:#fb923c,color:#fed7aa
+    style GitLab fill:#7c2d12,stroke:#fb923c,color:#fed7aa
+    style NetBox fill:#14532d,stroke:#4ade80,color:#dcfce7
+    style Slack fill:#7f1d1d,stroke:#f87171,color:#fecaca
+```
 
 **Semaphore — Terraform VM create and bootstrap**
 
@@ -548,50 +515,7 @@ Semaphore provides a web interface for running Terraform plans and Ansible playb
 
 ![Semaphore Terraform run](assets/automation-semaphore-terraform.jpg)
 
-> **Screenshot placeholder** — Semaphore showing a Terraform apply run creating a VM with output logs
-
----
-
-### Declarative vs Imperative
-
-Same outcome, different mindset.
-
-**Imperative — bash**
-
-Step-by-step. Run these commands.
-
-```bash
-#!/bin/bash
-ssh proxmox-host "qm create 100 --name web1 \
-  --memory 4096 --cores 2 \
-  --net0 virtio,bridge=vmbr0,tag=20"
-ssh proxmox-host "qm set 100 --scsi0 local:32"
-ssh proxmox-host "qm start 100"
-ssh web1 "apt update && apt install -y nginx"
-ssh web1 "systemctl enable --now nginx"
-```
-
-The bash script breaks if you run it twice.
-
-**Declarative — Terraform**
-
-Outcome. This is what I want to exist.
-
-```hcl
-resource "proxmox_vm_qemu" "web1" {
-  name        = "web1"
-  target_node = "tritium"
-  memory      = 4096
-  cores       = 2
-  disk { size = "32G"; storage = "local" }
-  network {
-    bridge = "vmbr0"
-    tag    = 20
-  }
-}
-```
-
-The Terraform resource is idempotent — it converges to the desired state every time, regardless of what the current state is.
+![Semaphore Ansible workflow](assets/automation-semaphore-workflow.png)
 
 ---
 
@@ -599,13 +523,11 @@ The Terraform resource is idempotent — it converges to the desired state every
 
 <img src="https://www.home-assistant.io/favicon.ico" width="16"/> [Home Assistant](https://www.home-assistant.io) runs as a dedicated VM on the Proxmox cluster, isolated on VLAN 20 (IOT). It manages the smart home layer: Tapo smart plugs with power monitoring, temperature and humidity sensors, smart bulbs, and presence detection.
 
-All sensor data flows into InfluxDB, where Grafana picks it up for dashboards and alerting. Power consumption per device, per room, and per time-of-day is visible at a glance. The data also feeds threshold-based alerting — an unexpected power spike at 3am from a device that should be idle triggers an alert.
+All sensor data flows into InfluxDB, where Grafana picks it up for dashboards and alerting.
 
-The strict VLAN isolation matters here. IoT devices have well-documented security weaknesses. Placing them on a dedicated VLAN with deny-all inter-VLAN rules limits the blast radius of any compromise to the IoT subnet. Home Assistant is the only host permitted to communicate with IoT devices, and that rule is enforced at the firewall — not assumed.
+IoT devices have well-documented security weaknesses. I have all the IoT devices on a dedicated VLAN with deny-all inter-VLAN rules, which limits the blast radius of any compromise to the IoT subnet. Home Assistant is the only host permitted to communicate with IoT devices, and that rule is enforced in the UniFi firewall rules.
 
-![Home Assistant dashboard](assets/home-assistant.jpg)
-
-> **Screenshot placeholder** — Home Assistant dashboard showing device states, sensor readings, and energy consumption
+![Home Assistant dashboard](assets/home-assistant.png)
 
 ---
 
@@ -617,20 +539,13 @@ Metrics and logs flow from everything that matters into one place, and Grafana p
 
 - Apps: Home Assistant, \*arr stack, Jellyfin, DNS server
 - Network devices: UniFi switches and APs via SNMP and the unpoller exporter
-- Infrastructure: Proxmox nodes, IoT sensors, Tapo and Shelly smart plugs
+- Infrastructure: Proxmox nodes, IoT sensors, Tapo smart plugs
 
 ---
 
 ### Observability Matrix — InfluxDB + Telegraf Path
 
-```text
-Sources                     Storage                  Visualization
-Home Assistant    --------> +-----------+            +-----------+
-*arr / Jellyfin   Telegraf  | InfluxDB  | Flux/SQL   |  Grafana  |
-Proxmox nodes     API       |           | ---------> | Dashboards|
-IoT sensors       SNMP      |           |            | Alerting  |
-UniFi             --------> +-----------+            +-----------+
-```
+![InfluxDB + Grafana](assets/observability-InfluxDB.png)
 
 | Component | Role |
 |---|---|
@@ -638,13 +553,11 @@ UniFi             --------> +-----------+            +-----------+
 | <img src="https://www.influxdata.com/favicon.ico" width="16"/> [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/) | Agent-based collection from hosts, Docker containers, SNMP targets, and Home Assistant |
 | <img src="https://grafana.com/favicon.ico" width="16"/> [Grafana](https://grafana.com) | Dashboards and alerting across all data sources |
 
-**Glance dashboard**
+**Glances dashboard**
 
 <img src="https://nicolargo.github.io/glances/favicon.ico" width="16"/> [Glances](https://nicolargo.github.io/glances/) provides a real-time system-level view of each host. It runs on every node and exposes a summary that feeds into the main Grafana instance.
 
-![Glance dashboard](assets/observability-glance.jpg)
-
-> **Screenshot placeholder** — Glances system view or the Glances Grafana dashboard
+![Glances dashboard](assets/observability-glance.jpg)
 
 **Grafana + InfluxDB — Home Assistant metrics**
 
@@ -652,7 +565,11 @@ Smart plug power consumption, temperature sensors, humidity, and presence data f
 
 ![Grafana InfluxDB Home Assistant metrics](assets/observability-grafana-homeassistant.jpg)
 
-> **Screenshot placeholder** — Grafana dashboard showing Home Assistant sensor data — temperature, power, humidity
+**Proxmox metrics**
+
+Proxmox metrics in Grafana using InfluxDB as a data source.
+
+![Proxmox metrics in Grafana](assets/observability-grafana-proxmox.jpg)
 
 **Traefik log dashboard**
 
@@ -660,11 +577,7 @@ Smart plug power consumption, temperature sensors, humidity, and presence data f
 
 ![Traefik architecture diagram](assets/observability-traefik-diagram.jpg)
 
-> **Screenshot placeholder** — Traefik routing diagram showing ingress to backend services
-
-![Traefik log dashboard in Grafana](assets/observability-grafana-traefik.jpg)
-
-> **Screenshot placeholder** — Grafana dashboard showing Traefik request rates, status codes, and latency
+![Traefik log dashboard](assets/observability-logs-traefik.png)
 
 **Zabbix setup**
 
@@ -672,19 +585,11 @@ Smart plug power consumption, temperature sensors, humidity, and presence data f
 
 ![Zabbix dashboard](assets/observability-zabbix.jpg)
 
-> **Screenshot placeholder** — Zabbix host list or problem dashboard showing node health
-
 ---
 
 ### Observability Matrix — Prometheus Path
 
-```text
-Sources                     Storage                  Visualization
-Proxmox nodes     --------> +------------+           +-----------+
-UniFi (unpoller)  Exporters | Prometheus | PromQL    |  Grafana  |
-Kubernetes        Scrape    | Pull-based | --------> | Dashboards|
-Technitium DNS    --------> +------------+           +-----------+
-```
+![Prometheus + Grafana](assets/observability-Prometheus.png)
 
 | Component | Role |
 |---|---|
@@ -701,23 +606,17 @@ unpoller scrapes the UniFi controller API and exposes metrics in Prometheus form
 
 ![UniFi metrics in Grafana](assets/observability-grafana-unifi.jpg)
 
-> **Screenshot placeholder** — Grafana UniFi dashboard showing AP client counts and switch port traffic
-
 **Technitium DNS metrics**
 
 Technitium exposes a Prometheus-compatible metrics endpoint natively. Prometheus scrapes query counts, cache hit rates, blocked domain counts, and resolver latency. Useful for verifying that Pi-hole and Technitium are working correctly in tandem.
 
 ![Technitium metrics in Grafana](assets/observability-grafana-technitium.jpg)
 
-> **Screenshot placeholder** — Grafana panel showing Technitium DNS query volume and cache hit rate
-
 ---
 
 ## Career
 
 ### Why This Matters Professionally
-
-> "Interview answers stop being theoretical when you broke and fixed the thing yourself."
 
 The homelab is not separate from the career. It is the career, practiced without consequence. The skills table below maps directly to running services in this lab — not theoretical knowledge, but things that were configured, broke, and got fixed.
 
@@ -730,23 +629,9 @@ The engineers who understand both sides — cloud and on-prem, managed and self-
 
 ---
 
-### Skills Map
-
-| What I do at home | Hands-on skill | Job title | Cert path |
-|---|---|---|---|
-| Networking | VLANs, FW, DNS, DHCP, BGP, EVPN, FRR, IGPs, Wi-Fi | Network engineer | CCNA · CCNP · CCIE |
-| Virtualization | Proxmox cluster, Docker, k3s, GPU passthrough | SRE / sysadmin | RHCE · LFCS · LPIC |
-| Automation | Terraform, Ansible, GitOps, NetBox, CI/CD, Kubernetes | DevOps / platform | CKA · TF Assoc · AWS |
-| Observability | InfluxDB, Grafana, Telegraf, alerting | SRE / Observability | PromCertified · CKA-O |
-| Security | Auth, Wazuh, Segmentation, TLS, certs, Secrets, mTLS | Cybersecurity / Security engineer | Sec+ · OSCP · CISSP · CEH |
-
----
-
 ## For Network Engineers
 
-This section is for people who come from a networking background and want to use the homelab as a platform for hands-on protocol engineering. CCNP SP study and this lab ran in parallel. The gap between studying for a networking exam and actually running the protocols is large. The lab closes it.
-
-You cannot fully understand EVPN from a book. You need to break a BGP session, read the VPP output, and understand why the VNI table is empty. You cannot understand OSPF graceful restart by memorising the RFC. You need to pull a link and watch the convergence timer. That kind of learning only happens in a lab.
+This section is for people who come from a networking background and want to use the homelab as a platform for hands-on learning. The gap between studying for a networking exam and actually running the protocols is large. The labbing closes it.
 
 ---
 
@@ -765,15 +650,15 @@ For practising protocols, building exam topologies, and running real NOS images 
 
 **Emulator platforms**
 
-| Tool | Type | Notes | Link |
-|---|---|---|---|
-| <img src="https://www.eve-ng.net/favicon.ico" width="16"/> [EVE-NG](https://www.eve-ng.net) | Network emulator | Industry standard. Runs Cisco IOSv, Junos, Arista vEOS, Palo Alto. Community edition free | |
-| <img src="https://pnetlab.com/favicon.ico" width="16"/> [PNetLab](https://pnetlab.com) | Network emulator | EVE-NG fork with better UI and community lab sharing. Used here for Juniper JNCIS prep | |
-| <img src="https://containerlab.dev/favicon.ico" width="16"/> [Containerlab](https://containerlab.dev) | Container-based emulator | Topologies defined in YAML. Works with Nokia SR Linux (free), FRRouting, VyOS, cEOS. GitOps-native | |
-| <img src="https://www.gns3.com/favicon.ico" width="16"/> [GNS3](https://www.gns3.com) | Network emulator | Long-standing open-source emulator. Massive community and plugin ecosystem | |
-| <img src="https://www.cisco.com/favicon.ico" width="16"/> [Cisco Modeling Labs](https://www.cisco.com/c/en/us/products/cloud-systems-management/modeling-labs/index.html) | Network emulator | CML Personal is free (20 node limit). Best IOS XE / IOS XR fidelity | |
-| [vrnetlab](https://github.com/vrnetlab/vrnetlab) | VM-in-container | Run real router VMs inside Docker containers. Used by Containerlab for commercial NOS images | |
-| [Kathara](https://www.kathara.org) | Container-based emulator | Lightweight, academic roots. FRRouting and Quagga topologies | |
+| Tool | Type | Notes |
+|---|---|---|
+| <img src="https://www.eve-ng.net/favicon.ico" width="16"/> [EVE-NG](https://www.eve-ng.net) | Network emulator | Industry standard. Runs Cisco IOSv, Junos, Arista vEOS, Palo Alto. Community edition free |
+| <img src="https://pnetlab.com/favicon.ico" width="16"/> [PNetLab](https://pnetlab.com) | Network emulator | EVE-NG fork with better UI and community lab sharing. Used here for Juniper JNCIS prep |
+| <img src="https://containerlab.dev/favicon.ico" width="16"/> [Containerlab](https://containerlab.dev) | Container-based emulator | Topologies defined in YAML. Works with Nokia SR Linux (free), FRRouting, VyOS, cEOS. GitOps-native |
+| <img src="https://www.gns3.com/favicon.ico" width="16"/> [GNS3](https://www.gns3.com) | Network emulator | Long-standing open-source emulator. Massive community and plugin ecosystem |
+| <img src="https://www.cisco.com/favicon.ico" width="16"/> [Cisco Modeling Labs](https://www.cisco.com/c/en/us/products/cloud-systems-management/modeling-labs/index.html) | Network emulator | CML Personal is free (20 node limit). Best IOS XE / IOS XR fidelity |
+| [vrnetlab](https://github.com/vrnetlab/vrnetlab) | VM-in-container | Run real router VMs inside Docker containers. Used by Containerlab for commercial NOS images |
+| [Kathara](https://www.kathara.org) | Container-based emulator | Lightweight, academic roots. FRRouting and Quagga topologies |
 
 **Which one to use:**
 
@@ -781,13 +666,9 @@ For practising protocols, building exam topologies, and running real NOS images 
 - Containerlab for open-source networking (FRR, SR Linux, VyOS) and GitOps-style lab-as-code
 - GNS3 if the community resource library matters more than topology portability
 
-![PNetLab topology](assets/network-labs-pnetlab.jpg)
+![PNetLab topology](assets/network-labs-pnetlab.png)
 
-> **Screenshot placeholder** — PNetLab or EVE-NG showing a BGP or MPLS lab topology
-
-![Containerlab topology](assets/network-labs-containerlab.jpg)
-
-> **Screenshot placeholder** — Containerlab YAML topology definition and rendered graph
+![Containerlab topology](assets/network-labs-containerlab.png)
 
 ---
 
@@ -795,18 +676,18 @@ For practising protocols, building exam topologies, and running real NOS images 
 
 Tools for monitoring, alerting, and visualising your network's health. All open source or free tier.
 
-| Tool | Type | Notes | Link |
-|---|---|---|---|
-| <img src="https://www.zabbix.com/favicon.ico" width="16"/> [Zabbix](https://www.zabbix.com) | Full-stack NMS | Auto-discovery, SNMP, agent-based, extensive template library. Running here in Docker | |
-| <img src="https://www.librenms.org/favicon.ico" width="16"/> [LibreNMS](https://www.librenms.org) | SNMP-based NMS | Auto-discovery, topology maps, alerting, free forever. Best open-source SolarWinds alternative | |
-| <img src="https://www.opennms.com/favicon.ico" width="16"/> [OpenNMS](https://www.opennms.com) | Enterprise NMS | NetFlow, sFlow, IPFIX analysis, fault management, service monitoring | |
-| <img src="https://assets.nagios.com/downloads/nagioscore/favicon.ico" width="16"/> [Nagios Core](https://www.nagios.org) | Check-based monitoring | The original. Vast plugin ecosystem. Steeper setup than modern alternatives | |
-| <img src="https://www.netxms.org/favicon.ico" width="16"/> [NetXMS](https://www.netxms.org) | Full-stack NMS | SNMP, agent, topology maps, event correlation. Less known, very capable | |
-| <img src="https://www.icinga.com/favicon.ico" width="16"/> [Icinga 2](https://icinga.com) | Nagios fork | Better UI, REST API, modern config language | |
-| <img src="https://www.checkmk.com/favicon.ico" width="16"/> [Checkmk Free](https://checkmk.com) | Auto-discovery NMS | Free tier covers up to 25 hosts. Fast to get running | |
-| <img src="https://www.observium.org/favicon.ico" width="16"/> [Observium CE](https://www.observium.org) | SNMP NMS | Auto-discovery, traffic graphs. Community edition is free | |
-| <img src="https://ntopng.org/favicon.ico" width="16"/> [ntopng](https://www.ntop.org/products/traffic-analysis/ntop/) | Traffic analysis | Deep packet inspection, flow analysis, real-time traffic visibility | |
-| <img src="https://oss.oetiker.ch/favicon.ico" width="16"/> [Smokeping](https://oss.oetiker.ch/smokeping/) | Latency monitoring | Round-trip time and packet loss over time. Irreplaceable for WAN and ISP monitoring | |
+| Tool | Type | Notes |
+|---|---|---|
+| <img src="https://www.zabbix.com/favicon.ico" width="16"/> [Zabbix](https://www.zabbix.com) | Full-stack NMS | Auto-discovery, SNMP, agent-based, extensive template library. Running here in Docker |
+| <img src="https://www.librenms.org/favicon.ico" width="16"/> [LibreNMS](https://www.librenms.org) | SNMP-based NMS | Auto-discovery, topology maps, alerting, free forever. Best open-source SolarWinds alternative |
+| <img src="https://www.opennms.com/favicon.ico" width="16"/> [OpenNMS](https://www.opennms.com) | Enterprise NMS | NetFlow, sFlow, IPFIX analysis, fault management, service monitoring |
+| <img src="https://assets.nagios.com/downloads/nagioscore/favicon.ico" width="16"/> [Nagios Core](https://www.nagios.org) | Check-based monitoring | The original. Vast plugin ecosystem. Steeper setup than modern alternatives |
+| <img src="https://www.netxms.org/favicon.ico" width="16"/> [NetXMS](https://www.netxms.org) | Full-stack NMS | SNMP, agent, topology maps, event correlation. Less known, very capable |
+| <img src="https://www.icinga.com/favicon.ico" width="16"/> [Icinga 2](https://icinga.com) | Nagios fork | Better UI, REST API, modern config language |
+| <img src="https://www.checkmk.com/favicon.ico" width="16"/> [Checkmk Free](https://checkmk.com) | Auto-discovery NMS | Free tier covers up to 25 hosts. Fast to get running |
+| <img src="https://www.observium.org/favicon.ico" width="16"/> [Observium CE](https://www.observium.org) | SNMP NMS | Auto-discovery, traffic graphs. Community edition is free |
+| <img src="https://ntopng.org/favicon.ico" width="16"/> [ntopng](https://www.ntop.org/products/traffic-analysis/ntop/) | Traffic analysis | Deep packet inspection, flow analysis, real-time traffic visibility |
+| <img src="https://oss.oetiker.ch/favicon.ico" width="16"/> [Smokeping](https://oss.oetiker.ch/smokeping/) | Latency monitoring | Round-trip time and packet loss over time. Irreplaceable for WAN and ISP monitoring |
 
 ---
 
@@ -814,17 +695,17 @@ Tools for monitoring, alerting, and visualising your network's health. All open 
 
 Network-specific visibility: traffic flows, interface metrics, protocol state, and latency.
 
-| Tool | Purpose | Link |
-|---|---|---|
-| <img src="https://grafana.com/favicon.ico" width="16"/> [Grafana](https://grafana.com) | Dashboards and alerting across all network metric sources | |
-| <img src="https://prometheus.io/favicon.ico" width="16"/> [Prometheus](https://prometheus.io) | Pull-based collection via SNMP exporter, node exporter, unpoller | |
-| <img src="https://www.influxdata.com/favicon.ico" width="16"/> [InfluxDB](https://www.influxdata.com) | Time-series storage, better for high-cardinality IoT and sensor data | |
-| [unpoller](https://github.com/unpoller/unpoller) | UniFi client stats, AP signal, switch port counters into Prometheus or InfluxDB | |
-| [SNMP Exporter](https://github.com/prometheus/snmp_exporter) | Translates standard MIBs (ifTable, ifXTable) into Prometheus metrics | |
-| <img src="https://www.ntop.org/favicon.ico" width="16"/> [ntopng](https://www.ntop.org) | Real-time traffic and flow analysis | |
-| <img src="https://grafana.com/favicon.ico" width="16"/> [Loki](https://grafana.com/oss/loki/) | Log aggregation. Grafana-native, lightweight Elastic alternative | |
-| [Alertmanager](https://prometheus.io/docs/alerting/alertmanager/) | Prometheus alert routing to Slack, ntfy, PagerDuty, email | |
-| <img src="https://uptime.kuma.pet/favicon.ico" width="16"/> [Uptime Kuma](https://uptime.kuma.pet) | HTTP, TCP, DNS, ping uptime checks with a clean self-hosted UI | |
+| Tool | Purpose |
+|---|---|
+| <img src="https://grafana.com/favicon.ico" width="16"/> [Grafana](https://grafana.com) | Dashboards and alerting across all network metric sources |
+| <img src="https://prometheus.io/favicon.ico" width="16"/> [Prometheus](https://prometheus.io) | Pull-based collection via SNMP exporter, node exporter, unpoller |
+| <img src="https://www.influxdata.com/favicon.ico" width="16"/> [InfluxDB](https://www.influxdata.com) | Time-series storage, better for high-cardinality IoT and sensor data |
+| [unpoller](https://github.com/unpoller/unpoller) | UniFi client stats, AP signal, switch port counters into Prometheus or InfluxDB |
+| [SNMP Exporter](https://github.com/prometheus/snmp_exporter) | Translates standard MIBs (ifTable, ifXTable) into Prometheus metrics |
+| <img src="https://www.ntop.org/favicon.ico" width="16"/> [ntopng](https://www.ntop.org) | Real-time traffic and flow analysis |
+| <img src="https://grafana.com/favicon.ico" width="16"/> [Loki](https://grafana.com/oss/loki/) | Log aggregation. Grafana-native, lightweight Elastic alternative |
+| [Alertmanager](https://prometheus.io/docs/alerting/alertmanager/) | Prometheus alert routing to Slack, ntfy, PagerDuty, email |
+| <img src="https://uptime.kuma.pet/favicon.ico" width="16"/> [Uptime Kuma](https://uptime.kuma.pet) | HTTP, TCP, DNS, ping uptime checks with a clean self-hosted UI |
 
 ---
 
@@ -832,22 +713,7 @@ Network-specific visibility: traffic flows, interface metrics, protocol state, a
 
 The roadmap covers the progression from first Linux server to full infrastructure automation, with parallel tracks for networking, virtualisation, and cloud.
 
-[View the homelab roadmap on roadmap.sh](https://roadmap.sh/r/homelab-9b4ql)
-
-<details>
-<summary>Roadmap embed (GitHub Pages / local server only)</summary>
-
-```html
-<iframe
-  src="https://roadmap.sh/r/homelab-9b4ql"
-  width="100%"
-  height="800"
-  frameborder="0"
-  style="border: 1px solid #e1e4e8; border-radius: 6px;">
-</iframe>
-```
-
-</details>
+[View my homelab roadmap on roadmap.sh](https://roadmap.sh/r/homelab-9b4ql)
 
 **Phase 1 — Foundation.** Single machine. Docker Compose. One service. Learn Linux, SSH, reverse proxies, DNS.
 
@@ -859,7 +725,7 @@ The roadmap covers the progression from first Linux server to full infrastructur
 
 ---
 
-## Five Things to Remember
+## Takeaways
 
 **1. Start small.**
 One machine. One service. Solve one problem. Do not buy a rack first.
@@ -874,12 +740,8 @@ VLANs first, then maybe routed fabrics. The foundation of your homelab is the ne
 Manual before automating — understand it, then automate it. Click-ops does not survive your second rebuild. The first time you destroy your cluster and rebuild it from Git, you become a different kind of engineer.
 
 **5. Tell your story.**
-A homelab can be a project portfolio. Every section of this document is an interview answer. The unfair advantage is specificity — not "I know BGP" but "I ran iBGP AS 65000 across a Thunderbolt mesh with EVPN and here is what broke and why."
+A homelab can be a project portfolio.
 
 ---
 
-Built by [Peter Kinyua](https://medium.com/@peter_kinyua) — Network Engineer II at C Spire, AWS Community Builder (Networking & Content Delivery).
-
-Medium: [Why I Built a Home Lab](https://medium.com/@peter_kinyua/why-i-built-a-home-lab-and-whats-i-am-self-hosting-4b7c75b84c09) · Domain: hakunasababu.com
-
-> Resilience does not come from copy-paste setups. To build something with a soul, you have to understand the tech behind it.
+Built by [Peter Kinyua](https://medium.com/@peter_kinyua)
