@@ -2,7 +2,7 @@
 
 <img src="assets/rack53_logo_avatar.svg" width="140" alt="Rack53 Logo">
 
-# Peter's Homelab - Rack53
+# Peter's Homelab 
 
 Proxmox  • Kubernetes • Automation • Self-Hosting
 
