@@ -1,4 +1,4 @@
-# Peter's `Homelab - Rack53` 
+# <img src="./rack53_logo_avatar.svg" width="200" alt="Rack53 Logo"> Peter's `Homelab - Rack53` 
  
 Hi, I'm Peter  a **tinkerer at heart** with a passion for networking, DevOps, and self-hosting.
  
