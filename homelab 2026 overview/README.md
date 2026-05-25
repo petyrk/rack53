@@ -1,7 +1,7 @@
 # My Homelab Deep Dive
 
 A complete walkthrough of my homelab in 2026.
-Full write-up on Medium for my 2025 homelab overview: [Why I Built a Home Lab and What I'm Self-Hosting](https://medium.com/@peter_kinyua/why-i-built-a-home-lab-and-whats-i-am-self-hosting-4b7c75b84c09)
+Full write-up on Medium for my 2025 homelab overview: is available on medium -  [Why I Built a Home Lab and What I'm Self-Hosting](https://medium.com/@peter_kinyua/why-i-built-a-home-lab-and-whats-i-am-self-hosting-4b7c75b84c09)
 
 ---
 
