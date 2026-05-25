@@ -265,7 +265,7 @@ VLANs:
 
 ![Rack layout](assets/Rack-layout.jpg)
 
-> Physical unit positions and rack cabling
+> Rack layouts 
 
 ![2.4 GHz WiFi design](assets/2.4G-wifi-design.jpg)
 
