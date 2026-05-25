@@ -1,4 +1,12 @@
- # <img src="assets/rack53_logo_avatar.svg" width="200" alt="Rack53 Logo"> Peter's `Homelab - Rack53` 
+<div align="center">
+
+<img src="assets/rack53_logo_avatar.svg" width="140" alt="Rack53 Logo">
+
+# Peter's Homelab - Rack53
+
+Infrastructure as Code • Kubernetes • Automation • Self-Hosting
+
+</div>****
  
 Hi, I'm Peter  a **tinkerer at heart** with a passion for networking, DevOps, and self-hosting.
  
