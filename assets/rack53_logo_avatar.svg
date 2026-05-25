@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#0E1116" rx="48"/>
+
+  <!-- Rack frame -->
+  <rect x="80" y="70" width="240" height="260" fill="none" stroke="#2A2F36" stroke-width="6" rx="8"/>
+
+  <!-- Rack rails (left and right vertical strips with U markers) -->
+  <rect x="80" y="70" width="22" height="260" fill="#2A2F36" rx="4"/>
+  <rect x="298" y="70" width="22" height="260" fill="#2A2F36" rx="4"/>
+
+  <!-- U marker dots on left rail -->
+  <circle cx="91" cy="100" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+  <circle cx="91" cy="135" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+  <circle cx="91" cy="170" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+  <circle cx="91" cy="205" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+  <circle cx="91" cy="240" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+  <circle cx="91" cy="275" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+  <circle cx="91" cy="300" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+
+  <!-- U marker dots on right rail -->
+  <circle cx="309" cy="100" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+  <circle cx="309" cy="135" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+  <circle cx="309" cy="170" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+  <circle cx="309" cy="205" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+  <circle cx="309" cy="240" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+  <circle cx="309" cy="275" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+  <circle cx="309" cy="300" r="2.5" fill="#F4F4F1" opacity="0.4"/>
+
+  <!-- Empty server unit at top -->
+  <rect x="115" y="95" width="170" height="30" fill="#1A1F26" rx="3"/>
+  <circle cx="270" cy="110" r="3" fill="#00D084"/>
+  <circle cx="258" cy="110" r="3" fill="#2A2F36"/>
+
+  <!-- Empty server unit -->
+  <rect x="115" y="135" width="170" height="22" fill="#1A1F26" rx="3"/>
+
+  <!-- Main "53" unit -->
+  <rect x="115" y="170" width="170" height="100" fill="#00D084" rx="4"/>
+  <text x="200" y="245" font-family="JetBrains Mono, Menlo, Consolas, monospace" font-size="78" font-weight="700" text-anchor="middle" fill="#0E1116" letter-spacing="-2">53</text>
+
+  <!-- Bottom unit with indicator lights -->
+  <rect x="115" y="280" width="170" height="30" fill="#1A1F26" rx="3"/>
+  <circle cx="135" cy="295" r="3" fill="#00D084"/>
+  <circle cx="148" cy="295" r="3" fill="#00D084" opacity="0.5"/>
+  <circle cx="161" cy="295" r="3" fill="#2A2F36"/>
+</svg>
