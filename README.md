@@ -4,9 +4,9 @@
 
 # Peter's Homelab - Rack53
 
-Infrastructure as Code • Kubernetes • Automation • Self-Hosting
+Proxmox  • Kubernetes • Automation • Self-Hosting
 
-</div>****
+</div>
  
 Hi, I'm Peter  a **tinkerer at heart** with a passion for networking, DevOps, and self-hosting.
  
