@@ -635,6 +635,8 @@ Proxmox metrics in Grafana using InfluxDB as a data source.
 
 ![Prometheus + Grafana](assets/observability-Prometheus.png)
 > Prometheus + Grafana stack
+
+
 | Component | Role |
 |---|---|
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prometheus.png" width="16"/> [Prometheus](https://prometheus.io) | Pull-based metric collection. Label-based queries via PromQL, long-term storage |
