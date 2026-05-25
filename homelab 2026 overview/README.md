@@ -34,8 +34,8 @@ Full write-up on Medium for my 2025 homelab overview: [Why I Built a Home Lab an
 - [Observability](#observability)
   - [Observability Matrix — InfluxDB + Telegraf Path](#observability-matrix--influxdb--telegraf-path)
   - [Observability Matrix — Prometheus Path](#observability-matrix--prometheus-path)
-- [Career](#career)
-  - [Why This Matters Professionally](#why-this-matters-professionally)
+- [Selfhosting](#Selfhosting)
+  - [Why This Matters ](#why-this-matters)
 - [For Network Engineers](#for-network-engineers)
   - [Network Sandboxes and Emulators](#network-sandboxes-and-emulators)
   - [Open Source NMS Tools](#open-source-nms-tools)
@@ -664,7 +664,7 @@ Technitium exposes a Prometheus-compatible metrics endpoint natively. Prometheus
 
 ### Why This Matters 
 
-There is also a broader shift happening. More organisations are moving toward self-hosted and on-premises solutions. The open-source ecosystem has matured to the point where almost every major cloud service has a viable self-hosted equivalent. Some useful directories:
+There is a broader shift happening.Due to Privacy and cost factors, more organisations are moving toward self-hosted and on-premises solutions. The open-source ecosystem has matured to the point where almost every major cloud service has a viable self-hosted equivalent. Some useful directories:
 
 - [selfh.st/apps](https://selfh.st/apps/) — comprehensive directory of self-hosted alternatives
 - [awesome-selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted) — comprehensive git repo of self-hosted alternatives
