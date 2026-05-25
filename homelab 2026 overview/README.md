@@ -743,7 +743,7 @@ Network-specific visibility: traffic flows, interface metrics, protocol state, a
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/grafana.png" width="16"/> [Grafana](https://grafana.com) | Dashboards and alerting across all network metric sources |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prometheus.png" width="16"/> [Prometheus](https://prometheus.io) | Pull-based collection via SNMP exporter, node exporter, unpoller |
 | <img src="https://cdn.jsdelivr.net/gh/selfhst/icons/png/influxdb.png" width="16"/> [InfluxDB](https://www.influxdata.com) | Time-series storage, better for high-cardinality IoT and sensor data |
-| [SNMP Exporter]| Translates standard MIBs (ifTable, ifXTable) into Prometheus metrics |
+| SNMP Exporter | Translates standard MIBs (ifTable, ifXTable) into Prometheus metrics |
 | <img src="https://www.ntop.org/favicon.ico" width="16"/> [ntopng](https://www.ntop.org) | Real-time traffic and flow analysis |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/loki.png" width="16"/> [Loki](https://grafana.com/oss/loki/) | Log aggregation. Grafana-native, lightweight Elastic alternative |
 | [Alertmanager](https://prometheus.io/docs/alerting/alertmanager/) | Prometheus alert routing to Slack, ntfy, PagerDuty, email |
