@@ -61,12 +61,12 @@ I work in networking. I have had my fill of CLI-only setups professionally. At h
 
 The lab grew through four distinct phases. Each one unlocked a new category of understanding.
 
-| Phase | What it was | What I learned |
+| Phase | What it was | milestones |
 |---|---|---|
 | 01 — The gaming laptop | CasaOS, Docker, first self-hosted apps | Linux basics, SSH, port forwarding, reverse proxies, Docker |
 | 02 — Mini PCs + small rack | Two or three mini PCs, a managed switch, a tiny rack | VLANs, subnets, static DHCP, firewall rules |
-| 03 — Threadripper added | Real CPU, real RAM, PCIe lanes. Hardware became interesting | Bifurcation, NICs, GPU passthrough |
-| 04 — 12U rack, full UniFi stack | Proxmox cluster, UniFi gateway and switches, UPS, NAS | Clustering, SDN, automation, production mentality |
+| 03 — Threadripper added |  CPU, 128G RAM, PCIe lanes. Hardware became interesting | Bifurcation, NICs, GPU passthrough |
+| 04 — 16U rack, full UniFi stack | Proxmox cluster, UniFi gateway and switches, UPS, NAS | Clustering, SDN, automation, production mentality |
 
 At the heart of the lab sits a Rivco 16U server rack and a Geek-Pi mini rack. The Lenovo ThinkStation P620 (AMD Threadripper Pro 3945WX) is the powerhouse — virtualisation, storage, orchestration. A Firebat mini PC runs Linux Mint in kiosk mode as a dedicated metrics dashboard. Three mini PCs in a proxmox cluster. A UNAS Pro NAS handles storage and backups.
 
@@ -593,7 +593,7 @@ Metrics and logs flow from everything that matters into one place, and Grafana p
 
 **Glances dashboard**
 
-<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/glance.png" width="16"/> [Glances](https://github.com/glanceapp/glance/) provides a real-time system-level view of each host. It runs on every node and exposes a summary that feeds into the main Grafana instance.
+<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/glance.png" width="16"/> [Glances](https://github.com/glanceapp/glance/) A landing page/ homepage that provides a real-time system status view of infra and applications.
 
 ![Glance dashboard](assets/observability-glance.jpg)
  > Glance dashboard 
