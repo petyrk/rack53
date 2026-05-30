@@ -591,9 +591,9 @@ Metrics and logs flow from everything that matters into one place, and Grafana p
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/telegraf.png" width="16"/> [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/) | Agent-based collection from hosts, Docker containers, SNMP targets, and Home Assistant |
 | <img src="https://grafana.com/favicon.ico" width="16"/> [Grafana](https://grafana.com) | Dashboards and alerting across all data sources |
 
-**Glances dashboard**
+**Glance dashboard**
 
-<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/glance.png" width="16"/> [Glances](https://github.com/glanceapp/glance/) A landing page/ homepage that provides a real-time system status view of infra and applications.
+<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/glance.png" width="16"/> [Glance](https://github.com/glanceapp/glance/) A landing page/ homepage that provides a real-time system status view of infra and applications.
 
 ![Glance dashboard](assets/observability-glance.jpg)
  > Glance dashboard 
