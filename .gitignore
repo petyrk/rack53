@@ -1,0 +1,7 @@
+# Never commit upstream binaries, images or Amazon files
+*.zip
+*.img
+*.bin
+amonet*/
+pryon/
+logs/
