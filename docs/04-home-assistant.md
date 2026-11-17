@@ -9,6 +9,8 @@ Open `http://<device-ip>:2324` for each device and complete the wizard:
 3. A wake word.
 4. On the Show only: the dashboard to display.
 
+![Kiosk Satellite setup wizard on the Show](../assets/photos/08-kiosk-satellite-setup-wizard.jpg)
+
 ## Add the devices
 
 In Home Assistant, go to **Settings > Devices & services**. Each device appears as discovered:
@@ -19,6 +21,8 @@ In Home Assistant, go to **Settings > Devices & services**. Each device appears 
 | Echo Dot | `echo-dot-ks-` + last three characters of the serial |
 
 Click **Configure** on each. Every device gets an Assist satellite, volume and device controls, and a **Firmware** update entity. Future image updates install from that entity.
+
+![Kiosk Satellite remote admin for the Show, with the fleet below](../assets/photos/09-fleet-on-desk.jpg)
 
 With several devices hearing the same wake word, Kiosk Satellite's wake word arbitration makes the closest one answer.
 

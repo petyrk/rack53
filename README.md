@@ -6,6 +6,8 @@ Notes, checks and helper scripts from flashing an Echo Show 8 (1st gen) and thre
 
 The full write-up is on Medium and Substack: *[links]*
 
+![The finished fleet: Echo Show 8 on the dashboard, three Echo Dots with their light rings on](assets/photos/15-fleet-light-rings.gif)
+
 > **Warning:** Unlocking and flashing erase the device. There is no supported way back to Alexa, and a wrong file or an interrupted flash can brick it. You do this at your own risk. Read [docs/legal.md](docs/legal.md) first.
 
 ## The fleet
@@ -16,6 +18,8 @@ The full write-up is on Medium and Substack: *[links]*
 | Echo Dot (2nd gen, 2016) x3 | RS03QR | biscuit | Room satellites: voice, speaker, intercom | lineageos-echo-kiosk-satellite 2026.11.4 |
 
 Other generations are not supported. The 2nd- and 3rd-gen Echo Show 8 use chips this exploit doesn't work on.
+
+![Before flashing: the Echo Show 8 and Echo Dots in their boxes](assets/photos/01-fleet-before-flashing.jpg)
 
 ## Order of work
 

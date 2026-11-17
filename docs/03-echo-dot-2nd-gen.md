@@ -34,6 +34,8 @@ Please wait until the process finishes and DO NOT INTERRUPT IT.
 
 > **Warning:** The script returns before the Dot is finished. **Wait until the light ring turns white** before unplugging anything or running another command. Pulling the cable while the ring is still changing is how Dots get bricked.
 
+![Echo Dot light ring after the unlock](../assets/photos/14-dot-light-ring-after-unlock.gif)
+
 ## Step 2: Confirm recovery mode and the active slot
 
 ```sh

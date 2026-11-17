@@ -44,6 +44,8 @@ adb shell getprop ro.twrp.version
 | `adb devices -l` | The Show's line ends in `recovery` |
 | `ro.twrp.version` | `3.7.0_9-0` |
 
+![TWRP 3.7.0_9-0 main screen on the Show](../assets/photos/03-twrp-main-3.7.0_9-0.jpg)
+
 Any other TWRP version means the unlock didn't finish. Stop and go back to the XDA thread. `scripts/check-recovery.sh show8` runs both checks.
 
 ## Step 3: Wipe and install
@@ -55,9 +57,15 @@ adb push lineageos-echo-kiosk-satellite-2026.11.5-crown.zip /sdcard/update.zip
 adb shell twrp install /sdcard/update.zip
 ```
 
-> **Warning:** Wipe only cache and data. Wiping other partitions can brick the Show.
+On the TWRP screen this is **Wipe > Advanced Wipe**. I ticked System, Data and Cache, since the install rewrites System anyway.
+
+![TWRP Advanced Wipe with System, Data and Cache ticked](../assets/photos/02-twrp-advanced-wipe.jpg)
+
+> **Warning:** Leave Internal Storage, Storage and everything else unticked. Wiping other partitions can brick the Show.
 
 The install must end with `script succeeded: result was [1.000000]`. If it prints `assert failed` or an error, **don't reboot**. TWRP is still running and nothing is lost yet.
+
+![TWRP installing the crown image](../assets/photos/05-twrp-installing-crown.jpg)
 
 On success:
 
@@ -69,6 +77,8 @@ adb reboot
 > **Tip:** The upstream guide says "if it fails, stop here". The reboot is the success path. Until you run it, the Show stays in TWRP and `sys.boot_completed` comes back empty.
 
 ## Step 4: First boot
+
+![Kiosk Satellite logo on the first boot](../assets/photos/07-show8-kiosk-satellite-boot.jpg)
 
 The first boot takes about 90 seconds. Tick **Always allow from this computer** on the USB debugging prompt and tap **Allow**.
 
