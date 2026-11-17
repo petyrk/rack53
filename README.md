@@ -6,8 +6,6 @@ Flashing an Echo Show 8 and three Echo Dots into a cloud-free Home Assistant voi
 
 Notes and checks from flashing an Echo Show 8 (1st gen) and three Echo Dots (2nd gen) with LineageOS and [Kiosk Satellite](https://github.com/jxlarrea/kiosk-satellite), so they work as local Home Assistant voice satellites with no Alexa and no Amazon account.
 
-The full write-up is on Medium and Substack: *[links]*
-
 ![The finished fleet: Echo Show 8 on the dashboard, three Echo Dots with their light rings on](assets/photos/15-fleet-light-rings.gif)
 
 > **Warning:** Unlocking and flashing erase the device. There is no supported way back to Alexa, and a wrong file or an interrupted flash can brick it. You do this at your own risk.
