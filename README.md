@@ -1,6 +1,8 @@
-![Escaping Alexa: A Local Voice Fleet](assets/banner.png)
+![Fired Alexa, Kept the Hardware](assets/banner.png)
 
-# Escaping Alexa: an Echo Show 8 and three Echo Dots as a Home Assistant voice fleet
+# Fired Alexa, Kept the Hardware
+
+Flashing an Echo Show 8 and three Echo Dots into a cloud-free Home Assistant voice fleet.
 
 Notes, checks and helper scripts from flashing an Echo Show 8 (1st gen) and three Echo Dots (2nd gen) with LineageOS and [Kiosk Satellite](https://github.com/jxlarrea/kiosk-satellite), so they work as local Home Assistant voice satellites with no Alexa and no Amazon account.
 
@@ -27,7 +29,8 @@ Other generations are not supported. The 2nd- and 3rd-gen Echo Show 8 use chips 
 2. [Flash the Echo Show 8](docs/02-echo-show-8.md)
 3. [Flash each Echo Dot](docs/03-echo-dot-2nd-gen.md)
 4. [Add the fleet to Home Assistant and Music Assistant](docs/04-home-assistant.md)
-5. [Troubleshooting](docs/troubleshooting.md)
+5. [Web admin and Fleet Management](docs/05-web-admin-and-fleet.md)
+6. [Troubleshooting](docs/troubleshooting.md)
 
 ## Scripts
 
@@ -44,8 +47,9 @@ Every script stops and asks before it wipes or writes anything.
 
 This repo has no amonet binaries, LineageOS images, Amazon firmware or Amazon wake word models. Download amonet and the images from their upstream projects:
 
-- amonet (k4y0z and R0rt1z2): [Echo Show 8 crown thread on XDA](https://xdaforums.com/t/unlock-root-twrp-unbrick-amazon-echo-show-8-1st-gen-2019-crown.4766687/), and the biscuit package for the Dot
-- Kiosk images (jxlarrea): [lineageos-echo-kiosk-satellite releases](https://github.com/jxlarrea/lineageos-echo-kiosk-satellite/releases)
+- amonet (k4y0z and R0rt1z2): [Echo Show 8 (crown) on XDA](https://xdaforums.com/t/unlock-root-twrp-unbrick-amazon-echo-show-8-1st-gen-2019-crown.4766687/) and [Echo Dot (biscuit) on XDA](https://xdaforums.com/t/unlock-root-twrp-unbrick-amazon-echo-dot-2nd-gen-2016-biscuit.4761416/)
+- Kiosk images (jxlarrea): [Echo Show 8 releases](https://github.com/jxlarrea/lineageos-echo-kiosk-satellite/releases?q=crown) and [Echo Dot releases](https://github.com/jxlarrea/lineageos-echo-kiosk-satellite/releases?q=biscuit)
+- Upstream guides: [Echo Show 8 install](https://github.com/jxlarrea/lineageos-echo-kiosk-satellite/blob/main/docs/echo-show-8.md) and [Echo Dot unlocking notes](https://github.com/jxlarrea/lineageos-echo-kiosk-satellite/blob/main/docs/unlocking.md#echo-dot-2nd-gen)
 
 ## Credits
 

@@ -5,11 +5,18 @@ Repeat this page once per Dot. The Dot has no screen, so the light ring is your 
 ## Before you start
 
 - Deregister the Dot from your Amazon account.
-- Download `amonet-biscuit` v2 and the newest biscuit release of [lineageos-echo-kiosk-satellite](https://github.com/jxlarrea/lineageos-echo-kiosk-satellite/releases).
+- Download `amonet-biscuit` v2 from the [XDA guide](https://xdaforums.com/t/unlock-root-twrp-unbrick-amazon-echo-dot-2nd-gen-2016-biscuit.4761416/) and the newest [Echo Dot release](https://github.com/jxlarrea/lineageos-echo-kiosk-satellite/releases?q=biscuit).
 
 ## Step 1: Unlock with amonet
 
-Put the Dot in fastboot mode: *[add the method you used]*. Connect it, then:
+This follows R0rt1z2's [XDA guide for the Echo Dot](https://xdaforums.com/t/unlock-root-twrp-unbrick-amazon-echo-dot-2nd-gen-2016-biscuit.4761416/) and jxlarrea's [unlocking notes](https://github.com/jxlarrea/lineageos-echo-kiosk-satellite/blob/main/docs/unlocking.md#echo-dot-2nd-gen). No disassembly is needed.
+
+1. Unplug the Dot.
+2. Press and hold the **Action** button (the one with the single dot).
+3. Keep holding it while you plug in the micro-USB cable from your Linux host.
+4. The light ring turns **green**, then the host detects the Dot. Check with `lsusb | grep -i 1949`.
+
+Then:
 
 ```sh
 cd amonet-biscuit-v2.0.1/amonet
@@ -23,6 +30,8 @@ Detected: BISCUIT - Echo Dot 2nd Generation - 2016
 LK build: f379dba-20170906_000423
 Will use payload: fastbrick.img
 ```
+
+![amonet-fastbrick on an Echo Dot, then the recovery checks](../assets/photos/18-amonet-biscuit-terminal.png)
 
 Type `YES`. Sending the payload "might take a few attempts". It ends with:
 

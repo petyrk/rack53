@@ -13,3 +13,7 @@
 | 10-13-fleet-night*.jpg | The fleet at night |
 | 14-dot-light-ring-after-unlock.gif/.mp4 | A Dot's light ring after the unlock |
 | 15/16-fleet-light-rings*.gif/.mp4 | The finished fleet with light rings animating |
+| 17-amonet-crown-terminal.png | amonet-fastbrick unlocking the Echo Show 8 |
+| 18-amonet-biscuit-terminal.png | amonet-fastbrick unlocking an Echo Dot, then recovery checks |
+| 19-remote-admin-overview.png | Kiosk Satellite web admin Overview for the Show |
+| 20-fleet-management.png | Fleet Management: the Show leading three Dots |

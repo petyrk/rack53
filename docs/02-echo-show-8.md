@@ -10,7 +10,7 @@ Model **C7H6N3** only. The number is on the bottom of the device, next to the FC
 
 ## Step 1: Unlock with amonet
 
-Enter fastboot:
+This follows R0rt1z2's [XDA guide for the Echo Show 8](https://xdaforums.com/t/unlock-root-twrp-unbrick-amazon-echo-show-8-1st-gen-2019-crown.4766687/). Enter fastboot:
 
 1. Unplug power.
 2. Hold **Volume Down + Volume Up + Mute** together.
@@ -23,6 +23,8 @@ sudo ./fastbrick.sh
 ```
 
 Expected detection:
+
+![amonet-fastbrick on the Echo Show 8](../assets/photos/17-amonet-crown-terminal.png)
 
 ```
 Detected: CROWN - Echo Show 8 1st Generation - 2019
@@ -49,6 +51,8 @@ adb shell getprop ro.twrp.version
 Any other TWRP version means the unlock didn't finish. Stop and go back to the XDA thread. `scripts/check-recovery.sh show8` runs both checks.
 
 ## Step 3: Wipe and install
+
+This follows jxlarrea's [Echo Show 8 install guide](https://github.com/jxlarrea/lineageos-echo-kiosk-satellite/blob/main/docs/echo-show-8.md).
 
 ```sh
 adb shell twrp wipe cache
