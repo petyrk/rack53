@@ -68,8 +68,6 @@ adb reboot recovery
 adb shell bcbtool get_active
 ```
 
-`scripts/check-recovery.sh dot` runs all of these checks.
-
 ## Step 3: Install to slot A
 
 ```sh
@@ -109,8 +107,6 @@ adb reboot
 ```
 
 > **Tip:** If the slot B install fails, run `adb shell bcbtool set_active a` and reboot. If a Dot ever boot-loops, unplug it, hold **+** while plugging it back in to reach TWRP, set the slot that works, and reboot.
-
-`scripts/install-image.sh dot <zip>` runs steps 3 and 4 with checks between them.
 
 ## Step 5: Wi-Fi and Kiosk Satellite
 

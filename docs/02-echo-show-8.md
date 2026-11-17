@@ -48,7 +48,7 @@ adb shell getprop ro.twrp.version
 
 ![TWRP 3.7.0_9-0 main screen on the Show](../assets/photos/03-twrp-main-3.7.0_9-0.jpg)
 
-Any other TWRP version means the unlock didn't finish. Stop and go back to the XDA thread. `scripts/check-recovery.sh show8` runs both checks.
+Any other TWRP version means the unlock didn't finish. Stop and go back to the XDA thread.
 
 ## Step 3: Wipe and install
 

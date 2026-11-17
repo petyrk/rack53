@@ -2,8 +2,6 @@
 
 Use Linux. On Windows you have to install the Kindle Fire driver and Google's USB driver and hope the right one binds each time the device changes mode mid-flash. On Linux, adb, fastboot and the amonet scripts talk to the device directly once two things are fixed: ModemManager and USB permissions.
 
-`scripts/host-prep.sh` does all of this. The manual steps follow.
-
 ## Install the tools (Debian/Ubuntu)
 
 ```sh

@@ -3,7 +3,7 @@
 | Symptom | Cause | Fix |
 | --- | --- | --- |
 | `./fastbrick.sh: Permission denied` | Unzipping dropped the execute bit | `chmod +x *.sh` and `chmod +x bin/*` in the `amonet` folder |
-| fastboot shows `no permissions` | No udev rule for vendor ID 1949 | Run `scripts/host-prep.sh` |
+| fastboot shows `no permissions` | No udev rule for vendor ID 1949 | Add the udev rule in [Prepare a Linux host](01-linux-host.md) |
 | "Serial protocol mismatch" or the exploit never connects | ModemManager grabbed the serial port | `sudo systemctl stop ModemManager` |
 | Device never appears in `lsusb` | Charge-only cable, or not in fastboot | Swap cable, re-enter fastboot |
 | `ro.twrp.version` isn't `3.7.0_9-0` | Unlock incomplete or amonet 1 | Stop. Redo the unlock with amonet v2 |
