@@ -1,6 +1,6 @@
-![Fired Alexa, Kept the Hardware](assets/banner.png)
+![How I Replaced Alexa With Home Assistant on My Old Echo Devices](assets/banner.png)
 
-# Fired Alexa, Kept the Hardware
+# How I Replaced Alexa With Home Assistant on My Old Echo Devices
 
 Flashing an Echo Show 8 and three Echo Dots into a cloud-free Home Assistant voice fleet.
 
