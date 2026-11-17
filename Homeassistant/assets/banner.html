@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1600px; height: 680px; overflow: hidden; }
+  body {
+    font-family: "Inter", sans-serif;
+    background:
+      radial-gradient(ellipse 620px 420px at 1120px 360px, rgba(76, 64, 200, 0.42), transparent 70%),
+      radial-gradient(ellipse 900px 600px at 1300px 300px, rgba(40, 30, 120, 0.35), transparent 75%),
+      linear-gradient(135deg, #0c0a26 0%, #100d33 55%, #0b0a24 100%);
+    position: relative;
+    color: #fff;
+  }
+  .star { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: rgba(255,255,255,0.55); }
+  .streak { position: absolute; height: 1px; transform-origin: left center;
+    background: linear-gradient(90deg, rgba(140,150,255,0), rgba(140,150,255,0.55), rgba(140,150,255,0)); }
+
+  .text { position: absolute; left: 80px; top: 140px; width: 780px; }
+  .label { font-size: 19px; font-weight: 600; letter-spacing: 0.06em; color: #8f84e0; margin-bottom: 22px; }
+  h1 { font-size: 60px; line-height: 1.04; font-weight: 800; letter-spacing: -0.025em; }
+  .sub { margin-top: 30px; font-size: 25px; line-height: 1.5; color: #8e86c4; font-weight: 400; width: 600px; }
+
+  .card {
+    position: absolute; border-radius: 16px;
+    background: linear-gradient(160deg, rgba(48, 44, 92, 0.55), rgba(22, 20, 52, 0.55));
+    border: 1px solid rgba(150, 150, 230, 0.22);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.05);
+    backdrop-filter: blur(6px);
+  }
+  .cap { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; color: #b6b2dc; }
+</style>
+</head>
+<body>
+  <!-- stars -->
+  <div class="star" style="left:160px;top:76px"></div>
+  <div class="star" style="left:430px;top:18px"></div>
+  <div class="star" style="left:790px;top:118px"></div>
+  <div class="star" style="left:1420px;top:52px;opacity:.6"></div>
+  <div class="star" style="left:980px;top:610px;opacity:.5"></div>
+  <div class="star" style="left:620px;top:640px;opacity:.4"></div>
+  <div class="star" style="left:1250px;top:30px;opacity:.5"></div>
+
+  <!-- streaks -->
+  <div class="streak" style="left:1150px;top:0;width:260px;transform:rotate(60deg)"></div>
+  <div class="streak" style="left:1250px;top:40px;width:200px;transform:rotate(66deg)"></div>
+
+  <div class="text">
+    <div class="label">HOMELAB</div>
+    <h1>How I Replaced Alexa<br>With Home Assistant<br>on My Old Echo Devices</h1>
+    <div class="sub">Flashing an Echo Show 8 and three Echo Dots into a cloud-free Home Assistant voice fleet</div>
+  </div>
+
+  <!-- central device art -->
+  <svg style="position:absolute;left:880px;top:150px" width="560" height="440" viewBox="0 0 560 440">
+    <defs>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="6" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="softglow" x="-80%" y="-80%" width="260%" height="260%">
+        <feGaussianBlur stdDeviation="14"/>
+      </filter>
+      <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2b2f8a" stop-opacity="0.55"/>
+        <stop offset="1" stop-color="#16185a" stop-opacity="0.35"/>
+      </linearGradient>
+      <linearGradient id="amberline" x1="0" x2="1">
+        <stop offset="0" stop-color="#f0a040" stop-opacity="0"/>
+        <stop offset="0.5" stop-color="#f0a040" stop-opacity="0.9"/>
+        <stop offset="1" stop-color="#6aa0ff" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+
+    <!-- halo -->
+    <rect x="70" y="60" width="330" height="230" rx="20" fill="#4a5cff" opacity="0.35" filter="url(#softglow)"/>
+
+    <!-- Show 8: wedge body behind screen -->
+    <path d="M110 70 L360 70 L392 112 L392 300 L362 300" fill="none" stroke="#6fb4ff" stroke-opacity="0.45" stroke-width="2"/>
+    <line x1="392" y1="112" x2="392" y2="300" stroke="#6fb4ff" stroke-opacity="0.3" stroke-width="2"/>
+    <!-- screen -->
+    <rect x="80" y="90" width="300" height="210" rx="14" fill="url(#screen)" stroke="#7cc4ff" stroke-width="2.5" filter="url(#glow)"/>
+    <!-- dashboard tiles on screen -->
+    <rect x="104" y="114" width="76" height="52" rx="8" fill="#6fb4ff" fill-opacity="0.16" stroke="#7cc4ff" stroke-opacity="0.5"/>
+    <rect x="192" y="114" width="76" height="52" rx="8" fill="#6fb4ff" fill-opacity="0.16" stroke="#7cc4ff" stroke-opacity="0.5"/>
+    <rect x="280" y="114" width="76" height="52" rx="8" fill="#6fb4ff" fill-opacity="0.16" stroke="#7cc4ff" stroke-opacity="0.5"/>
+    <rect x="104" y="178" width="164" height="96" rx="8" fill="#6fb4ff" fill-opacity="0.10" stroke="#7cc4ff" stroke-opacity="0.45"/>
+    <rect x="280" y="178" width="76" height="96" rx="8" fill="#6fb4ff" fill-opacity="0.10" stroke="#7cc4ff" stroke-opacity="0.45"/>
+    <text x="186" y="232" fill="#8fd0ff" font-family="Inter" font-weight="700" font-size="17" letter-spacing="2" text-anchor="middle">HOME</text>
+    <circle cx="142" cy="140" r="9" fill="none" stroke="#9ad6ff" stroke-width="2"/>
+    <path d="M222 148 l8 -14 l8 14 z" fill="none" stroke="#9ad6ff" stroke-width="2"/>
+    <rect x="306" y="132" width="24" height="16" rx="3" fill="none" stroke="#9ad6ff" stroke-width="2"/>
+
+    <!-- amber signal line under device -->
+    <rect x="20" y="326" width="420" height="2" fill="url(#amberline)"/>
+
+    <!-- Echo Dots: three pucks -->
+    <g transform="translate(30,360)">
+      <ellipse cx="50" cy="18" rx="46" ry="14" fill="#1a1c4a" stroke="#5f6bd8" stroke-opacity="0.6" stroke-width="2"/>
+      <path d="M4 18 L4 38 A46 14 0 0 0 96 38 L96 18" fill="#141640" stroke="#5f6bd8" stroke-opacity="0.5" stroke-width="2"/>
+      <ellipse cx="50" cy="18" rx="40" ry="11" fill="none" stroke="#5ee0e6" stroke-width="3" filter="url(#glow)"/>
+    </g>
+    <g transform="translate(175,372)">
+      <ellipse cx="50" cy="18" rx="46" ry="14" fill="#1a1c4a" stroke="#5f6bd8" stroke-opacity="0.6" stroke-width="2"/>
+      <path d="M4 18 L4 38 A46 14 0 0 0 96 38 L96 18" fill="#141640" stroke="#5f6bd8" stroke-opacity="0.5" stroke-width="2"/>
+      <ellipse cx="50" cy="18" rx="40" ry="11" fill="none" stroke="#5ee0e6" stroke-width="3" filter="url(#glow)"/>
+    </g>
+    <g transform="translate(320,360)">
+      <ellipse cx="50" cy="18" rx="46" ry="14" fill="#1a1c4a" stroke="#5f6bd8" stroke-opacity="0.6" stroke-width="2"/>
+      <path d="M4 18 L4 38 A46 14 0 0 0 96 38 L96 18" fill="#141640" stroke="#5f6bd8" stroke-opacity="0.5" stroke-width="2"/>
+      <ellipse cx="50" cy="18" rx="40" ry="11" fill="none" stroke="#5ee0e6" stroke-width="3" filter="url(#glow)"/>
+    </g>
+  </svg>
+
+  <!-- card: ASSIST (top right) -->
+  <div class="card" style="left:1360px;top:26px;width:200px;height:156px">
+    <svg style="position:absolute;left:60px;top:22px" width="80" height="80" viewBox="0 0 80 80">
+      <circle cx="40" cy="40" r="36" fill="#f2b6c8"/>
+      <path d="M40 40 L40 4 A36 36 0 0 1 74 50 Z" fill="#e8809e"/>
+      <rect x="33" y="22" width="14" height="26" rx="7" fill="#fff" fill-opacity="0.9"/>
+      <path d="M27 40 a13 13 0 0 0 26 0" fill="none" stroke="#fff" stroke-width="3"/>
+      <line x1="40" y1="53" x2="40" y2="60" stroke="#fff" stroke-width="3"/>
+    </svg>
+    <div class="cap" style="position:absolute;bottom:20px;width:100%;text-align:center">ASSIST</div>
+  </div>
+
+  <!-- card: SENDSPIN bars -->
+  <div class="card" style="left:1130px;top:200px;width:170px;height:126px">
+    <svg style="position:absolute;left:24px;top:22px" width="122" height="56" viewBox="0 0 122 56">
+      <defs><linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#6a8cff"/><stop offset="1" stop-color="#3b4fcf"/></linearGradient></defs>
+      <rect x="0" y="36" width="12" height="20" rx="2" fill="url(#bar)"/>
+      <rect x="18" y="16" width="12" height="40" rx="2" fill="url(#bar)"/>
+      <rect x="36" y="26" width="12" height="30" rx="2" fill="url(#bar)"/>
+      <rect x="54" y="4" width="12" height="52" rx="2" fill="url(#bar)"/>
+      <rect x="72" y="20" width="12" height="36" rx="2" fill="url(#bar)"/>
+      <rect x="90" y="10" width="12" height="46" rx="2" fill="url(#bar)"/>
+      <rect x="108" y="30" width="12" height="26" rx="2" fill="url(#bar)"/>
+    </svg>
+    <div class="cap" style="position:absolute;bottom:18px;width:100%;text-align:center">SENDSPIN</div>
+  </div>
+
+  <!-- card: WAKE WORD waveform -->
+  <div class="card" style="left:1370px;top:318px;width:210px;height:150px">
+    <div class="cap" style="position:absolute;top:20px;width:100%;text-align:center">WAKE WORD</div>
+    <svg style="position:absolute;left:20px;top:52px" width="170" height="80" viewBox="0 0 170 80">
+      <defs><linearGradient id="fillw" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3fb8b0" stop-opacity="0.35"/><stop offset="1" stop-color="#3fb8b0" stop-opacity="0"/></linearGradient></defs>
+      <path d="M0 64 L18 54 L34 58 L52 40 L68 46 L86 26 L104 38 L122 18 L140 28 L160 14 L170 16 L170 80 L0 80 Z" fill="url(#fillw)"/>
+      <path d="M0 64 L18 54 L34 58 L52 40 L68 46 L86 26 L104 38 L122 18 L140 28 L160 14 L170 16" fill="none" stroke="#56d6cc" stroke-width="3" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <!-- card: AMONET (amber, bottom) -->
+  <div class="card" style="left:1395px;top:518px;width:190px;height:124px;border-color:rgba(240,170,80,0.3);background:linear-gradient(160deg, rgba(70,52,40,0.55), rgba(30,24,40,0.55))">
+    <div class="cap" style="position:absolute;top:22px;left:22px;color:#e7a956">AMONET</div>
+    <div style="position:absolute;left:22px;top:56px;width:150px;height:6px;border-radius:3px;background:#d99a4a;opacity:.85"></div>
+    <div style="position:absolute;left:22px;top:74px;width:98px;height:6px;border-radius:3px;background:#d99a4a;opacity:.7"></div>
+    <div style="position:absolute;left:22px;top:92px;width:156px;height:6px;border-radius:3px;background:#d99a4a;opacity:.85"></div>
+  </div>
+
+  <!-- small dark card with LED dot -->
+  <div class="card" style="left:900px;top:600px;width:180px;height:56px">
+    <div style="position:absolute;left:20px;top:22px;width:10px;height:10px;border-radius:50%;background:#5ee08a;box-shadow:0 0 10px #5ee08a"></div>
+    <div class="cap" style="position:absolute;left:42px;top:20px">LOCAL ONLY</div>
+  </div>
+</body>
+</html>
